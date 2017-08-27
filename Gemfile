@@ -15,6 +15,8 @@ gem 'debride'
 
 gem 'omniauth-github'
 
+gem 'denv'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
