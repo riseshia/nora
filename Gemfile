@@ -13,6 +13,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'debride'
 
+gem 'omniauth-github'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
