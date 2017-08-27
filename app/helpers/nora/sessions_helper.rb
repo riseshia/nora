@@ -1,0 +1,2 @@
+module Nora::SessionsHelper
+end

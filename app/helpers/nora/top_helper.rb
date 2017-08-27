@@ -1,0 +1,2 @@
+module Nora::TopHelper
+end
