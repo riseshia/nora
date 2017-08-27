@@ -1,0 +1,10 @@
+class CreateNoraSecureUserTokens < ActiveRecord::Migration[5.1]
+  def change
+    create_table :nora_secure_user_tokens do |t|
+      t.references :user, foreign_key: true, null: false
+      t.string :token, limit: 40, null: false
+
+      t.timestamps
+    end
+  end
+end
