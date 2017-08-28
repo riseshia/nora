@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'debride'
 
 gem 'omniauth-github'
+gem 'octokit', '~> 4.0'
 
 gem 'denv'
 
