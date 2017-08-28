@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170827035649) do
+ActiveRecord::Schema.define(version: 20170828112536) do
+
+  create_table "nora_repositories", force: :cascade do |t|
+    t.string "name", limit: 100, null: false
+    t.string "url", limit: 200, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "nora_secure_user_tokens", force: :cascade do |t|
     t.integer "user_id", null: false

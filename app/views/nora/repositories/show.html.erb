@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @nora_repository.name %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @nora_repository.url %>
+</p>
+
+<%= link_to 'Edit', edit_nora_repository_path(@nora_repository) %> |
+<%= link_to 'Back', nora_repositories_path %>

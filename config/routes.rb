@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :nora do
+    resources :repositories
+  end
   root to: 'nora/top#index'
 
   namespace :nora do
