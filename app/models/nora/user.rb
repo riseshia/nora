@@ -1,10 +1,6 @@
 module Nora
   class User < ApplicationRecord
-    self.table_name = 'nora_users'
-
-    has_one :secure_user_token
-
-    after_create :register_webhook
+    has_one :secure_token
 
     def self.sign_in!(auth)
       find_or_initialize_by(provider: auth[:provider], uid: auth[:uid]).tap do |user|
@@ -12,7 +8,7 @@ module Nora
           user.secure_user_token.update!(token: auth[:credentials][:token])
         else
           user.assign_attributes(name: auth[:info][:name])
-          user.build_secure_user_token(token: auth[:credentials][:token])
+          user.build_secure_token(token: auth[:credentials][:token])
           user.save!
         end
       end

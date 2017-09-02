@@ -1,19 +1,9 @@
-Rails.application.routes.draw do
-  namespace :nora do
-    resources :repositories
-  end
-  root to: 'nora/top#index'
+Nora::Engine.routes.draw do
+  root to: 'top#index'
 
-  namespace :nora do
-    get 'top/index'
+  resources :repositories
 
-    get 'sessions/new'
-    get 'sessions/create'
-    get 'sessions/destroy'
-  end
-
-  get 'sign_in', to: 'nora/sessions#new', as: 'sign_in'
-  delete 'sign_out', to: 'nora/sessions#destroy', as: 'sign_out'
-
-  get 'auth/:provider/callback', to: 'nora/sessions#create'
+  get 'sign_in', to: 'sessions#new', as: 'sign_in'
+  delete 'sign_out', to: 'sessions#destroy', as: 'sign_out'
+  get 'auth/:provider/callback', to: 'sessions#create'
 end

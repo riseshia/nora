@@ -1,2 +1,4 @@
-module Nora::RepositoriesHelper
+module Nora
+  module RepositoriesHelper
+  end
 end

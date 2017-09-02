@@ -1,2 +1,4 @@
-module Nora::TopHelper
+module Nora
+  module TopHelper
+  end
 end

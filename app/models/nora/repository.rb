@@ -1,3 +1,4 @@
-class Nora::Repository < ApplicationRecord
-  self.table_name = 'nora_repositories'
+module Nora
+  class Repository < ApplicationRecord
+  end
 end

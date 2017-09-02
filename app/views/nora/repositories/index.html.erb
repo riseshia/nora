@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Nora Repositories</h1>
+<h1>Repositories</h1>
 
 <table>
   <thead>
@@ -12,13 +12,13 @@
   </thead>
 
   <tbody>
-    <% @nora_repositories.each do |nora_repository| %>
+    <% @repositories.each do |repository| %>
       <tr>
-        <td><%= nora_repository.name %></td>
-        <td><%= nora_repository.url %></td>
-        <td><%= link_to 'Show', nora_repository %></td>
-        <td><%= link_to 'Edit', edit_nora_repository_path(nora_repository) %></td>
-        <td><%= link_to 'Destroy', nora_repository, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= repository.name %></td>
+        <td><%= repository.url %></td>
+        <td><%= link_to 'Show', repository %></td>
+        <td><%= link_to 'Edit', edit_repository_path(repository) %></td>
+        <td><%= link_to 'Destroy', repository, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Nora Repository', new_nora_repository_path %>
+<%= link_to 'New Repository', new_repository_path %>
