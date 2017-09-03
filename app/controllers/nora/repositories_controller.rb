@@ -2,23 +2,15 @@ require_dependency 'nora/application_controller'
 
 module Nora
   class RepositoriesController < ApplicationController
-    before_action :set_repository, only: %i[show edit update destroy]
-
     # GET /repositories
     def index
       @repositories = Repository.all
     end
 
-    # GET /repositories/1
-    def show; end
-
     # GET /repositories/new
     def new
       @repository = Repository.new
     end
-
-    # GET /repositories/1/edit
-    def edit; end
 
     # POST /repositories
     def create
@@ -31,27 +23,14 @@ module Nora
       end
     end
 
-    # PATCH/PUT /repositories/1
-    def update
-      if @repository.update(repository_params)
-        redirect_to @repository, notice: 'Repository was successfully updated.'
-      else
-        render :edit
-      end
-    end
-
     # DELETE /repositories/1
     def destroy
+      @repository = Repository.find(params[:id])
       @repository.destroy
       redirect_to repositories_url, notice: 'Repository was successfully destroyed.'
     end
 
     private
-
-    # Use callbacks to share common setup or constraints between actions.
-    def set_repository
-      @repository = Repository.find(params[:id])
-    end
 
     # Only allow a trusted parameter "white list" through.
     def repository_params
