@@ -12,7 +12,7 @@ RSpec.describe Nora::User, type: :model do
         }
       end
 
-      subject(:user_token) { described_class.sign_in!(auth).token }
+      subject(:user_token) { described_class.sign_in!(auth).reload.token }
 
       context 'with newbie' do
         let(:token) { 'some token' }

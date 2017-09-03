@@ -11,15 +11,9 @@ module Nora
         else
           user.assign_attributes(name: auth[:info][:name])
           user.build_secure_token(token: auth[:credentials][:token])
-          user.save!
+          transaction { user.save! }
         end
       end
-    end
-
-    private
-
-    def client
-      Octokit::Client.new(access_token: secure_token.token)
     end
   end
 end
