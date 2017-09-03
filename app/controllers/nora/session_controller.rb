@@ -2,6 +2,7 @@ require_dependency 'nora/application_controller'
 
 module Nora
   class SessionController < ApplicationController
+    skip_before_action :require_sign_in, only: %i(new create)
     def new; end
 
     def create

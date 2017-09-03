@@ -3,7 +3,7 @@ Nora::Engine.routes.draw do
 
   resources :repositories
 
-  get 'sign_in', to: 'sessions#new', as: 'sign_in'
-  delete 'sign_out', to: 'sessions#destroy', as: 'sign_out'
-  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'sign_in', to: 'session#new', as: 'sign_in'
+  delete 'sign_out', to: 'session#destroy', as: 'sign_out'
+  get 'auth/:provider/callback', to: 'session#create'
 end

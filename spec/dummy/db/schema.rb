@@ -10,30 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_170_902_121_551) do
-  create_table 'nora_repositories', force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
-    t.string 'name', limit: 100, null: false
-    t.string 'url', limit: 200, null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+ActiveRecord::Schema.define(version: 20170902121551) do
+
+  create_table "nora_repositories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", limit: 100, null: false
+    t.string "url", limit: 200, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'nora_secure_tokens', force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
-    t.bigint 'nora_user_id', null: false
-    t.string 'token', limit: 40, null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['nora_user_id'], name: 'index_nora_secure_tokens_on_nora_user_id'
+  create_table "nora_secure_tokens", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "nora_user_id", null: false
+    t.string "token", limit: 40, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["nora_user_id"], name: "index_nora_secure_tokens_on_nora_user_id"
   end
 
-  create_table 'nora_users', force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
-    t.string 'provider', limit: 20, null: false
-    t.string 'uid', limit: 40, null: false
-    t.string 'name', limit: 50, null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index %w[provider uid], name: 'nora_user_uniq_provider_uid', unique: true
+  create_table "nora_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "provider", limit: 20, null: false
+    t.string "uid", limit: 40, null: false
+    t.string "name", limit: 50, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["provider", "uid"], name: "nora_user_uniq_provider_uid", unique: true
   end
 
-  add_foreign_key 'nora_secure_tokens', 'nora_users'
+  add_foreign_key "nora_secure_tokens", "nora_users"
 end
