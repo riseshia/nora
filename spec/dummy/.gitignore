@@ -19,3 +19,5 @@
 db/migrate/
 log/
 tmp/
+
+.env
