@@ -9,32 +9,34 @@ module Nora
 
     # GET /repositories/new
     def new
-      @repository = Repository.new
+      @repositories = enable_repos.map do |repo|
+        Repository.new(name: repo.full_name, url: repo.html_url)
+      end
+      Repository.all.pluck(:name).each do |existing_name|
+        @repositories.delete_if {|repo| repo.name == existing_name }
+      end
     end
 
     # POST /repositories
     def create
-      @repository = Repository.new(repository_params)
-
-      if @repository.save
-        redirect_to @repository, notice: 'Repository was successfully created.'
-      else
-        render :new
+      params[:names].each do |name|
+        repo = octokit_client.repository(name)
+        Repository.register_hook!(octokit_client, repo)
       end
+      redirect_to repositories_path, notice: 'Watching started.'
     end
 
     # DELETE /repositories/1
     def destroy
-      @repository = Repository.find(params[:id])
-      @repository.destroy
-      redirect_to repositories_url, notice: 'Repository was successfully destroyed.'
+      Repository.find(params[:id]).unregister_hook!
+      redirect_to repositories_url, notice: 'Repository was unregistered.'
     end
 
     private
 
-    # Only allow a trusted parameter "white list" through.
-    def repository_params
-      params.require(:repository).permit(:name, :url)
+    def enable_repos
+      octokit_client.repositories.
+        select { |r| r.permissions.admin }.delete_if(&:fork)
     end
   end
 end
