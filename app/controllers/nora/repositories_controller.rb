@@ -28,7 +28,8 @@ module Nora
 
     # DELETE /repositories/1
     def destroy
-      Repository.find(params[:id]).unregister_hook!
+      repo = Repository.find(params[:id])
+      Repository.unregister_hook!(octokit_client, repo)
       redirect_to repositories_url, notice: 'Repository was unregistered.'
     end
 
