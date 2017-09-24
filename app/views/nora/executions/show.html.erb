@@ -22,7 +22,7 @@
 
 <p>
   <strong>Result:</strong>
-  <%= @execution.result %>
+  <%= simple_format(@execution.result) %>
 </p>
 
 <%= link_to 'Back', executions_path %>

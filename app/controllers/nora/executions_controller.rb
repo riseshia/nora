@@ -22,6 +22,7 @@ module Nora
       @execution = Execution.new(execution_params)
 
       if @execution.save
+        Nora::FindUnusedDiff.new.run(@execution)
         redirect_to @execution, notice: 'Execution was successfully created.'
       else
         render :new

@@ -5,5 +5,9 @@ module Nora
     validates :pull_request_id, presence: true
     validates :base, presence: true
     validates :compare, presence: true
+
+    def remote_compare_branch
+      "pull/#{pull_request_id}/head:#{compare}"
+    end
   end
 end
