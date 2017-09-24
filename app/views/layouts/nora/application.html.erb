@@ -9,7 +9,9 @@
 <body>
 
 <% if session[:user_id] %>
-  <%= link_to "sign out", sign_out_path, method: :delete %>
+  <p>
+    <%= link_to "sign out", sign_out_path, method: :delete %>
+  </p>
 <% end %>
 <%= yield %>
 
