@@ -22,7 +22,7 @@ module Nora
       @execution = Execution.new(execution_params)
 
       if @execution.save
-        Nora::FindUnusedDiff.new.run(@execution)
+        Nora::FindUnusedDiffJob.perform_later(@execution.id)
         redirect_to @execution, notice: 'Execution was successfully created.'
       else
         render :new
