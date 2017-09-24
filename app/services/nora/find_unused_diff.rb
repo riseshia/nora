@@ -1,4 +1,3 @@
-require 'diffy'
 require 'open3'
 
 class Nora::FindUnusedDiff
@@ -16,10 +15,7 @@ class Nora::FindUnusedDiff
       end
       compare_diff = find_unused_to(nora_path, dir)
 
-      result = Diffy::Diff.new(base_diff, compare_diff).to_s.
-        each_line.select { |line| line.start_with?('+') }.
-        map { |line| line[2..-1] }.
-        join("\n")
+      result = Nora::ExtractNewerDiffer.new(base_diff, compare_diff).process
       execution.update(completed: true, result: result)
     end
   end
