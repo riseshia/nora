@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'omniauth-github'
   s.add_dependency 'octokit', '~> 4.0'
   s.add_dependency 'debride'
+  s.add_dependency 'diffy'
 
   s.add_development_dependency 'rspec-rails', '~> 3.6'
   s.add_development_dependency 'mysql2'
