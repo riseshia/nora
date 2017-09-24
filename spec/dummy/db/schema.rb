@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170902121551) do
+ActiveRecord::Schema.define(version: 20170924055443) do
+
+  create_table "nora_executions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "nora_repository_id", null: false
+    t.integer "pull_request_id", null: false
+    t.string "base", limit: 128, null: false
+    t.string "compare", limit: 128, null: false
+    t.boolean "completed", default: false, null: false
+    t.text "result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["nora_repository_id"], name: "index_nora_executions_on_nora_repository_id"
+  end
 
   create_table "nora_repositories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", limit: 100, null: false

@@ -1,0 +1,41 @@
+<h1>New Execution</h1>
+
+<%= form_with(model: @execution, local: true) do |form| %>
+  <% if @execution.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@execution.errors.count, "error") %> prohibited this execution from being saved:</h2>
+
+      <ul>
+      <% @execution.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :repository_id %>
+    <%= form.collection_select :nora_repository_id, Nora::Repository.all, :id, :name  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pull_request_id %>
+    <%= form.text_field :pull_request_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :base %>
+    <%= form.text_field :base, id: :execution_base %>
+  </div>
+
+  <div class="field">
+    <%= form.label :compare %>
+    <%= form.text_field :compare, id: :execution_compare %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', executions_path %>

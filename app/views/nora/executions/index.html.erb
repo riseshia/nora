@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Executions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nora repository</th>
+      <th>Pull request id</th>
+      <th>Base</th>
+      <th>Compare</th>
+      <th>Completed</th>
+      <th>Result</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @executions.each do |execution| %>
+      <tr>
+        <td><%= execution.nora_repository.name %></td>
+        <td><%= execution.pull_request_id %></td>
+        <td><%= execution.base %></td>
+        <td><%= execution.compare %></td>
+        <td><%= execution.completed %></td>
+        <td><%= link_to 'Show', execution %></td>
+        <td><%= link_to 'Destroy', execution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Execution', new_execution_path %>

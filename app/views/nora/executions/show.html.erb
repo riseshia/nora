@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>repository:</strong>
+  <%= @execution.nora_repository.name %>
+</p>
+
+<p>
+  <strong>Base:</strong>
+  <%= @execution.base %>
+</p>
+
+<p>
+  <strong>Compare:</strong>
+  <%= @execution.compare %>
+</p>
+
+<p>
+  <strong>Completed:</strong>
+  <%= @execution.completed %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <%= @execution.result %>
+</p>
+
+<%= link_to 'Back', executions_path %>
